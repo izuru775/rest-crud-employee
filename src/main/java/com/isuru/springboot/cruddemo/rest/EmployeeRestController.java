@@ -22,7 +22,7 @@ public class EmployeeRestController {
     public List<Employee> findAll(){
         return employeeService.findAll();
     }
-    // Add mapping to find an employee by id
+    // Add mapping to GET /employee/{employeeId} -find an employee by id
     @GetMapping("/employees/{employeeId}")
     public Employee findById(@PathVariable int employeeId){
         Employee theEmployee = employeeService.findById(employeeId);
@@ -31,17 +31,18 @@ public class EmployeeRestController {
         }
         return theEmployee;
     }
-    // Add mapping for POST /employee - add new employee
+    // Add mapping for POST /employees - add new employee
     @PostMapping("/employees")
     public Employee save(@RequestBody Employee myEmployee){
         myEmployee.setId(0);
         return employeeService.save(myEmployee);
     }
+    // Add mapping for PUT /employees - update an existing employee
     @PutMapping("/employees")
     public Employee update(@RequestBody Employee myEmployee){
         return employeeService.save(myEmployee);
     }
-
+    // Add mapping for DELETE /employees - delete an employee using id
     @DeleteMapping("/employees/{employeeId}")
     public void deleteById(@PathVariable int employeeId){
         employeeService.deleteById(employeeId);
