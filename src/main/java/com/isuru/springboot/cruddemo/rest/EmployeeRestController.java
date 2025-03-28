@@ -55,7 +55,7 @@ public class EmployeeRestController {
     }
 
     // Add mapping for PATCH /employees/{employeeId} - patch employee ... partial update
-    @PatchMapping("/employee/{employeeId}")
+    @PatchMapping("/employees/{employeeId}")
     public Employee patchEmployee(@PathVariable int employeeId,
                                   @RequestBody Map<String,Object> patchPayload){
         // Retrieve the employee from the database
@@ -74,7 +74,7 @@ public class EmployeeRestController {
 
         Employee dbEmployee = employeeService.save(patchedEmployee);
 
-        return null;
+        return dbEmployee;
     }
 
     private Employee apply(Map<String, Object> patchPayload, Employee tempEmployee) {
